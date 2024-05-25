@@ -1,0 +1,82 @@
+<?php
+include("../Assets/Connection/connection.php");
+include("sessionvalidation.php");
+ob_start();
+include('head.php');
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+  <table border="1" align="center" cellpadding="10" cellspacing="20" style="border-collapse:collapse">
+    <tr>
+      <td>
+    <?php
+	
+	$selcount="select * from tbl_booking where booking_id='".$_GET["bid"]."'";
+	//echo $selcount;
+	$datacount=$connection->query($selcount);
+	$rowcount=$datacount->fetch_assoc();
+	$count=$rowcount["booking_guest"];
+
+
+    
+
+   
+
+
+    
+?>
+    // Loop to generate forms
+    <form method="post" action="process_data.php">
+    <?php
+    for ($i = 1; $i <= $count; $i++) {
+      ?>
+      <tr>
+      <td>
+        <?php
+        echo '<label for="name' . $i . '">NAME:</label>';
+        echo '<input type="text" name="guest_name[]" required><br>';
+		
+		echo '<label for="name' . $i . '">ADDRESS:</label>';
+		echo '<textarea name="guest_address[]" required></textarea><br>';
+		
+		echo '<label for="name' . $i . '">GENDER:</label>';
+		echo '<input type="radio" name="guest_gender[]" value="m">MALE';
+		echo '<input type="radio" name="guest_gender[]" value="f">FEMALE</br>';
+		
+		echo '<label for="name' . $i . '">Contact:</label>';
+		echo '<input type="number" name="guest_number[]" min="1" required><br>';
+		
+
+		
+
+		
+		
+        echo '<input type="hidden" name="dayno[]" value="' . $i . '">';
+        echo '<br>';
+        ?>
+        </td>
+  </tr>
+  <?php
+    }
+    ?>
+  <tr>
+    <td>
+    <input type="submit" value="Submit All">
+  </td>
+  </tr>
+</form>
+  </table>
+</form>
+</body>
+<?php
+include('Foot.php');
+ob_flush();
+?>
+</html>

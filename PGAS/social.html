@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Sliding and Rotating Animated Social Media Icons</title>
+</head>
+<body>
+    <style>
+        /* Reset default styles */
+body, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Style for the social icons container */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Style for individual social media icons */
+.social-icons .icon {
+    text-decoration: none;
+    font-size: 2rem;
+    margin: 0 1rem;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+/* Style for Facebook icon */
+.social-icons .facebook i {
+    color: #1877F2;
+}
+
+
+/* Style for Instagram icon */
+.social-icons .instagram i {
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Sliding and rotating animation for icons */
+.social-icons .icon i::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    transform: scaleX(0) rotate(0deg);
+    transform-origin: right;
+    z-index: -1;
+}
+
+.social-icons .icon:hover i::before {
+    transform: scaleX(1) rotate(360deg);
+    transform-origin: left;
+    left: 0;
+}
+
+    </style>
+    <div class="social-icons">
+        <a href="#" class="icon facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#" class="icon twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="icon instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</body>
+</html>

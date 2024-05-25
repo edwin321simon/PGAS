@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Loading Page</title>
+</head>
+<body>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222; /* Dark background color */
+    overflow: hidden;
+    color: #fff; /* Text color */
+    font-family: Arial, sans-serif;
+}
+
+.loading-page {
+    background-color: #222;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+.loader-container {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 1s ease-in-out 1s forwards, fadeIn 2s ease-in-out 1s forwards;
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid #fff;
+    animation: spin 2s linear infinite;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+    </style>
+    <div class="loading-page">
+        <div class="loader-container">
+            <div class="loader">
+                <div class="spinner"></div>
+            </div>
+            <h1>Loading...</h1>
+        </div>
+    </div>
+</body>
+</html>
